@@ -1,0 +1,33 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	
+    id 'java'
+}
+
+ext['springboot.version'] = '2.7.0'
+ext['camel.version'] = '3.20.2'
+ext['log4j2.version'] = '2.17.0'
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.eknord'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = JavaVersion.VERSION_17
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	
+	implementation "org.apache.camel.springboot:camel-spring-boot-starter:${project.ext['camel.version']}"	
+	
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
